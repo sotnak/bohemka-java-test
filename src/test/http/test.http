@@ -1,0 +1,21 @@
+POST http://localhost:8080/item
+Content-Type: application/json
+
+{
+  "value": 10,
+  "tag": "Petr"
+}
+###
+PUT http://localhost:8080/item/64a578f6f8d099761a3f1875
+Content-Type: application/json
+
+{
+  "tag": "Pavel",
+  "value": 5
+}
+
+###
+GET http://localhost:8080/item/64a57c1e02fa701b44b546cc
+
+###
+GET http://localhost:8080/item?value=5&tags=Petr,Pavel&operator==
