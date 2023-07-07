@@ -4,8 +4,34 @@ services:
     container_name: mongoDB
     volumes:
       - mongo_data:/data/db
+      - mongo_config:/data/configdb
+      - ./mongo-init:/docker-entrypoint-initdb.d
     ports:
       - 27017:27017
 
+  redis:
+    image: redis
+    container_name: redisCache
+    ports:
+      - 6379:6379
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/
+      SPRING_DATA_MONGODB_DATABASE: db
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      MONGO_EXPIRE:
+      REDIS_TTL: 10
+
 volumes:
   mongo_data:
+  mongo_config:
