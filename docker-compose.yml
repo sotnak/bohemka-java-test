@@ -29,7 +29,7 @@ services:
       SPRING_DATA_MONGODB_DATABASE: db
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
-      MONGO_EXPIRE:
+      MONGO_EXPIRE: 3600
       REDIS_TTL: 10
 
 volumes:
