@@ -25,7 +25,9 @@ Technologies used:
 - Database: MongoDB (persistent data), Redis (caching)
 - Application distribution / deployment: Docker
 ---
-REST API, persistent data and caching database can be started by ```docker compose up -d```.
+REST API can be build by ```mvn clean install```.
+Docker image is build using already existing API build in target folder.
+API, persistent data and caching database can be started by ```docker compose up -d```.
 API image supports following environmental parameters:
 - SPRING_DATA_MONGODB_URI: URI to MongoDB (e.g. mongodb://mongo:27017/).
 - SPRING_DATA_MONGODB_DATABASE: database of MongoDB.
